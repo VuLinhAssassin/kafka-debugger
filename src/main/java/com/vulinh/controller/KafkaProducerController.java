@@ -24,7 +24,9 @@ import lombok.RequiredArgsConstructor;
 public class KafkaProducerController {
 
     @PostMapping("/send")
-    public Object sendMessage(@RequestParam(required = false) String topic, @RequestBody String data) {
+    public Object sendMessage(@RequestParam(name = "topic",
+                                            required = false) String topic,
+                              @RequestBody String data) {
         return kafkaProducerService.sendMessage(topic, data);
     }
 
