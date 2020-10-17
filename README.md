@@ -38,7 +38,7 @@ If you want to use Windows Look and Feel, use this command (in Command Prompt or
 
 ```java -jar YourDumbAppNameHere.jar Windows-Look-And-Feel```
 
-Replace `YourDumbAppNameHere` with the jar file name, obviously! That `Windows-Look-And-Feel` can be put anywhere in your command arguments, as long as those goddamn things are separated by space character.
+***
 
 If you want to change the server port from **32767** to something you like, use this command:
 
@@ -46,14 +46,21 @@ If you want to change the server port from **32767** to something you like, use 
 
 And of course, 6969 is the new server port. ~~FBI should be knocking your door any minute now...~~
 
+***
+
 To specify the Kafka bootstrap servers (your organization's kafka bootstrap servers, for example), use this:
 
 ```java -jar YourDumbAppNameHere.jar --app.kafka.bootstrap-servers=192.168.0.69:9092,192.168.0.96:9092```
 
 Bootstrap servers are separated by comma character.
+***
 
-### Use batch file
+And finally, words of wisdom:
+
+>Replace `YourDumbAppNameHere` with the jar file name, obviously! That `Windows-Look-And-Feel` can be put anywhere in your command arguments, as long as those goddamn things are separated by space character.
+
+### Use batch files
 
 Those command can be put into batch files if you intend on using them frequently.
 
-Add `@echo off` at the beginning of your batch file to not let the command prompt Windows display the command line when running.
+Add `@echo off` at the beginning of your batch file to not let the Command Prompt Windows display the command line when running.
