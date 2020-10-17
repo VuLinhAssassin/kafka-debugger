@@ -1,5 +1,6 @@
 package com.vulinh.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class KafkaProducerController {
 
+    @PostMapping("/send")
     public Object sendMessage(@RequestParam(required = false) String topic, @RequestBody String data) {
         return kafkaProducerService.sendMessage(topic, data);
     }
