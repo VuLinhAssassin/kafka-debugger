@@ -1,6 +1,6 @@
 # Introduction
 
-This application is meant for sending Kafka message via a graphical user interface, as well as by using exposed controller to do so (read: using Postman or something).
+This application is meant for sending Kafka message via a graphical user interface, as well as by using an exposed controller to do so (read: using Postman or something).
 
 # How to Send Kafka Message
 
