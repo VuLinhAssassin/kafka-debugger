@@ -51,3 +51,9 @@ To specify the Kafka bootstrap servers (your organization's kafka bootstrap serv
 ```java -jar YourDumbAppNameHere.jar --app.kafka.bootstrap-servers=192.168.0.69:9092,192.168.0.96:9092```
 
 Bootstrap servers are separated by comma character.
+
+### Use batch file
+
+Those command can be put into batch files if you intend on using them frequently.
+
+Add `@echo off` at the beginning of your batch file to not let the command prompt Windows display the command line when running.
