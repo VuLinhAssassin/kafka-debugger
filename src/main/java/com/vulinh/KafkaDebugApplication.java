@@ -1,15 +1,12 @@
 package com.vulinh;
 
+import com.vulinh.frame.KafkaDebugFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import com.vulinh.frame.KafkaDebugFrame;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The Main class of Spring Boot application.
@@ -22,9 +19,8 @@ public class KafkaDebugApplication {
 
     /**
      * <p>
-     * The main method. The passed argument can be used to change some of the application's properties listed in
-     * application.properties file. Ideal if you want to deploy a stand-alone application that anyone with JVM (version
-     * 8 or above) can just run anywhere.
+     * The main method. The passed argument can be used to change some of the application's properties listed in application.properties file. Ideal if you want
+     * to deploy a stand-alone application that anyone with JVM (version 8 or above) can just run anywhere.
      * </p>
      * <p>
      * For example, if you wish to change Kafka's bootstrap server, just type in the command line:
@@ -44,17 +40,14 @@ public class KafkaDebugApplication {
      * <code>KafkaDebugApplication</code>: the name of this app's jar package.
      * </p>
      * <p>
-     * By default, this address will be set to <code>localhost:9092</code>, as if you are running Kafka in your local
-     * computer.
+     * By default, this address will be set to <code>localhost:9092</code>, as if you are running Kafka in your local computer.
      * </p>
      * <p>
      * <p>
-     * To enable Windows Look And Feel, just add Use-Windows-Look-And-Feel argument. This should not conflict with
-     * Spring arguments in any way.
+     * To enable Windows Look And Feel, just add Use-Windows-Look-And-Feel argument. This should not conflict with Spring arguments in any way.
      * </p>
      *
-     * @param args
-     *            the array that contains list of argument passed via command line.
+     * @param args the array that contains list of argument passed via command line.
      */
     public static void main(String... args) {
 
@@ -62,8 +55,8 @@ public class KafkaDebugApplication {
          * Retrive application context to use Spring Bean
          */
         ConfigurableApplicationContext applicationContext =
-                                                          new SpringApplicationBuilder(KafkaDebugApplication.class).headless(false)
-                                                                                                                   .run(args);
+            new SpringApplicationBuilder(KafkaDebugApplication.class).headless(false)
+                .run(args);
 
         for (String arg : args) {
             if ("Windows-Look-And-Feel".equals(arg)) {

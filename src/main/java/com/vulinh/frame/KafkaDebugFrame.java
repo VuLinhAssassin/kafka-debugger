@@ -1,21 +1,37 @@
 package com.vulinh.frame;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vulinh.service.KafkaProducerService;
-
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 @Slf4j
 public class KafkaDebugFrame extends JFrame {
 
+    // Stupid Eclipse
+    private static final long serialVersionUID = 848018704682881804L;
+    // The bean required for this form here
+    private final String debugTopic;
+    private final transient KafkaProducerService kafkaProducerService;
+    private final ObjectMapper objectMapper;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBeautify;
+    private javax.swing.JButton buttonMinify;
+    private javax.swing.JButton buttonSendMessage;
+    private javax.swing.JCheckBox checkUseDebugTopic;
+    private javax.swing.JCheckBox checkWordWrap;
+    private javax.swing.JPanel panelFormat;
+    private javax.swing.JPanel panelKafkaMessage;
+    private javax.swing.JPanel panelKafkaTopic;
+    private javax.swing.JPanel panelSend;
+    private javax.swing.JScrollPane scrollPane1;
+    private javax.swing.JTextArea textKafkaMessage;
+    private javax.swing.JTextField textKafkaTopic;
     public KafkaDebugFrame(org.springframework.context.ConfigurableApplicationContext context) {
         initComponents();
 
@@ -68,21 +84,21 @@ public class KafkaDebugFrame extends JFrame {
         javax.swing.GroupLayout panelKafkaTopicLayout = new javax.swing.GroupLayout(panelKafkaTopic);
         panelKafkaTopic.setLayout(panelKafkaTopicLayout);
         panelKafkaTopicLayout.setHorizontalGroup(panelKafkaTopicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                      .addComponent(textKafkaTopic)
-                                                                      .addGroup(panelKafkaTopicLayout.createSequentialGroup()
-                                                                                                     .addComponent(checkUseDebugTopic)
-                                                                                                     .addGap(0, 0,
-                                                                                                             Short.MAX_VALUE)));
+            .addComponent(textKafkaTopic)
+            .addGroup(panelKafkaTopicLayout.createSequentialGroup()
+                .addComponent(checkUseDebugTopic)
+                .addGap(0, 0,
+                    Short.MAX_VALUE)));
         panelKafkaTopicLayout.setVerticalGroup(panelKafkaTopicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                    .addGroup(panelKafkaTopicLayout.createSequentialGroup()
-                                                                                                   .addComponent(textKafkaTopic,
-                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                   .addComponent(checkUseDebugTopic)
-                                                                                                   .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                    Short.MAX_VALUE)));
+            .addGroup(panelKafkaTopicLayout.createSequentialGroup()
+                .addComponent(textKafkaTopic,
+                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkUseDebugTopic)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+                    Short.MAX_VALUE)));
 
         panelKafkaMessage.setBorder(javax.swing.BorderFactory.createTitledBorder("Kafka message (text)"));
 
@@ -113,27 +129,27 @@ public class KafkaDebugFrame extends JFrame {
         javax.swing.GroupLayout panelKafkaMessageLayout = new javax.swing.GroupLayout(panelKafkaMessage);
         panelKafkaMessage.setLayout(panelKafkaMessageLayout);
         panelKafkaMessageLayout.setHorizontalGroup(panelKafkaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                          .addComponent(scrollPane1)
-                                                                          .addComponent(panelFormat,
-                                                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 538,
-                                                                                        Short.MAX_VALUE)
-                                                                          .addGroup(panelKafkaMessageLayout.createSequentialGroup()
-                                                                                                           .addComponent(checkWordWrap)
-                                                                                                           .addGap(0, 0,
-                                                                                                                   Short.MAX_VALUE)));
+            .addComponent(scrollPane1)
+            .addComponent(panelFormat,
+                javax.swing.GroupLayout.DEFAULT_SIZE, 538,
+                Short.MAX_VALUE)
+            .addGroup(panelKafkaMessageLayout.createSequentialGroup()
+                .addComponent(checkWordWrap)
+                .addGap(0, 0,
+                    Short.MAX_VALUE)));
         panelKafkaMessageLayout.setVerticalGroup(panelKafkaMessageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(panelKafkaMessageLayout.createSequentialGroup()
-                                                                                                         .addComponent(checkWordWrap)
-                                                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                         .addComponent(scrollPane1,
-                                                                                                                       javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                       414,
-                                                                                                                       Short.MAX_VALUE)
-                                                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                         .addComponent(panelFormat,
-                                                                                                                       javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                       javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                       javax.swing.GroupLayout.PREFERRED_SIZE)));
+            .addGroup(panelKafkaMessageLayout.createSequentialGroup()
+                .addComponent(checkWordWrap)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane1,
+                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                    414,
+                    Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelFormat,
+                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         panelSend.setBorder(javax.swing.BorderFactory.createTitledBorder("Send message here"));
         panelSend.setLayout(new java.awt.GridLayout(1, 0));
@@ -146,24 +162,24 @@ public class KafkaDebugFrame extends JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(panelKafkaMessage, javax.swing.GroupLayout.Alignment.TRAILING,
-                                                      javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                      Short.MAX_VALUE)
-                                        .addComponent(panelKafkaTopic, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                      javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(panelSend, javax.swing.GroupLayout.Alignment.TRAILING,
-                                                      javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                      Short.MAX_VALUE));
+            .addComponent(panelKafkaMessage, javax.swing.GroupLayout.Alignment.TRAILING,
+                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                Short.MAX_VALUE)
+            .addComponent(panelKafkaTopic, javax.swing.GroupLayout.DEFAULT_SIZE,
+                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelSend, javax.swing.GroupLayout.Alignment.TRAILING,
+                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                Short.MAX_VALUE));
         layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                      .addGroup(layout.createSequentialGroup()
-                                                      .addComponent(panelKafkaTopic, javax.swing.GroupLayout.PREFERRED_SIZE, 66,
-                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                      .addComponent(panelKafkaMessage, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                      .addComponent(panelSend, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                                                    javax.swing.GroupLayout.PREFERRED_SIZE)));
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelKafkaTopic, javax.swing.GroupLayout.PREFERRED_SIZE, 66,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelKafkaMessage, javax.swing.GroupLayout.DEFAULT_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelSend, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,6 +190,7 @@ public class KafkaDebugFrame extends JFrame {
         textKafkaTopic.setEditable(!isSelected);
         textKafkaTopic.setText(isSelected ? debugTopic : StringUtils.EMPTY);
     }
+    // End of variables declaration//GEN-END:variables
 
     private void buttonSendMessageActionPerformed(java.awt.event.ActionEvent evt) {
         showLog(evt);
@@ -195,22 +212,7 @@ public class KafkaDebugFrame extends JFrame {
         formatJson(textKafkaMessage, false);
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton     buttonBeautify;
-    private javax.swing.JButton     buttonMinify;
-    private javax.swing.JButton     buttonSendMessage;
-    private javax.swing.JCheckBox   checkUseDebugTopic;
-    private javax.swing.JCheckBox   checkWordWrap;
-    private javax.swing.JPanel      panelFormat;
-    private javax.swing.JPanel      panelKafkaMessage;
-    private javax.swing.JPanel      panelKafkaTopic;
-    private javax.swing.JPanel      panelSend;
-    private javax.swing.JScrollPane scrollPane1;
-    private javax.swing.JTextArea   textKafkaMessage;
-    private javax.swing.JTextField  textKafkaTopic;
-    // End of variables declaration//GEN-END:variables
-
-    // Some utiliy methods here
+    // Some utility methods here
     private void formatJson(JTextArea source, boolean isBeautiful) {
         try {
             JsonNode jsonNode = objectMapper.readTree(source.getText());
@@ -230,11 +232,4 @@ public class KafkaDebugFrame extends JFrame {
         log.info("Source: 0x{}", Integer.toHexString(event.getSource().hashCode()).toUpperCase());
     }
 
-    // The bean required for this form here
-    private final String                         debugTopic;
-    private final transient KafkaProducerService kafkaProducerService;
-    private final ObjectMapper                   objectMapper;
-
-    // Stupid Eclipse
-    private static final long                    serialVersionUID = 848018704682881804L;
 }

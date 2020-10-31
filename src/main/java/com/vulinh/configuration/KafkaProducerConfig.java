@@ -1,8 +1,8 @@
 package com.vulinh.configuration;
 
+import com.vulinh.utils.PropertyConstant;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-
-import com.vulinh.utils.PropertyConstant;
 
 /**
  * Kafka Producer configuration. This class will define all Kafka's required beans to operate Kafka Producer.
@@ -21,14 +19,20 @@ import com.vulinh.utils.PropertyConstant;
 @Configuration
 public class KafkaProducerConfig {
 
+    @Value(PropertyConstant.PRODUCER_KEY_SERIALIZER)
+    private String keySerializerClassName;
+    @Value(PropertyConstant.PRODUCER_VALUE_SERIALIZER)
+    private String valueSerializerClassName;
+    @Value(PropertyConstant.BOOTSTRAP_SERVERS)
+    private String bootstrapServers;
+
     /**
      * <p>
      * Define ProducerFactory bean.
      * </p>
      *
      * @return the ProducerFactory bean object managed by Spring IoC container.
-     * @throws ClassNotFoundException
-     *             if the class canonical name is wrong, or the program lacks required libraries.
+     * @throws ClassNotFoundException if the class canonical name is wrong, or the program lacks required libraries.
      */
     @Bean
     public ProducerFactory<String, String> kafkaProducerFactory() throws ClassNotFoundException {
@@ -45,21 +49,11 @@ public class KafkaProducerConfig {
      * </p>
      *
      * @return the KafkaTemplate bean object managed by Spring IoC.
-     * @throws ClassNotFoundException
-     *             if the class canonical name is wrong or lack required library.
+     * @throws ClassNotFoundException if the class canonical name is wrong or lack required library.
      */
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() throws ClassNotFoundException {
         return new KafkaTemplate<>(kafkaProducerFactory());
     }
-
-    @Value(PropertyConstant.PRODUCER_KEY_SERIALIZER)
-    private String keySerializerClassName;
-
-    @Value(PropertyConstant.PRODUCER_VALUE_SERIALIZER)
-    private String valueSerializerClassName;
-
-    @Value(PropertyConstant.BOOTSTRAP_SERVERS)
-    private String bootstrapServers;
 
 }
